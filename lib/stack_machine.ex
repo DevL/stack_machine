@@ -1,0 +1,2 @@
+defmodule StackMachine do
+end
