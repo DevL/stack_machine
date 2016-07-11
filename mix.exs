@@ -37,6 +37,7 @@ defmodule StackMachine.Mixfile do
     [
       {:earmark, "~> 0.2", only: :dev},
       {:ex_doc, "~> 0.12", only: :dev},
+      {:mix_test_watch, "~> 0.2", only: :dev},
       {:inch_ex, ">= 0.5.3", only: :docs}
     ]
   end
