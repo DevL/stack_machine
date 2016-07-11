@@ -16,7 +16,7 @@ defmodule StackMachine do
     _extract_subroutines(code, subroutines)
   end
 
-  defp _execute([], stack), do: stack
+  defp _execute([], stack), do: {:ok, stack}
   defp _execute([:push | [value | code]], stack) do
     _execute(code, [value | stack])
   end
@@ -38,7 +38,7 @@ defmodule StackMachine do
     _execute(code, new_stack)
   end
   defp _execute([:return | _code], stack), do: stack
-  defp _execute([:halt | _code], _stack), do: :halted
+  defp _execute([:halt | _code], stack), do: {:halted, stack}
 
   defp subroutine(label) do
     Agent.get(__MODULE__, fn(state) -> state.subroutines[label] end)

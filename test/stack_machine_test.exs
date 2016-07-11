@@ -4,7 +4,7 @@ defmodule StackMachineTest do
 
   test "running an empty program returns an empty stack" do
     code = []
-    expected = []
+    expected = {:ok, []}
     result = StackMachine.execute(code)
 
     assert result == expected
@@ -12,7 +12,7 @@ defmodule StackMachineTest do
 
   test "running a program returns the result of it" do
     code = [:push, 4, :push, 5, :add]
-    expected = [9]
+    expected = {:ok, [9]}
     result = StackMachine.execute(code)
 
     assert result == expected
@@ -20,7 +20,7 @@ defmodule StackMachineTest do
 
   test "a program halting returns the current stack" do
     code = [:halt]
-    expected = :halted
+    expected = {:halted, []}
     result = StackMachine.execute(code)
 
     assert result == expected
